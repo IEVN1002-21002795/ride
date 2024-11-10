@@ -1,0 +1,7 @@
+{
+  "name": "RIDE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,82 @@
+.login-background {
+    --background: url('../../assets/img/bg-estilo-dos.png') no-repeat center center / cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+  
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+  
+.logo {
+    width: 200px;
+    height: 150px;
+}
+
+.titulo-login-ride-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+.cont-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+  
+.welcome-text {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    text-align: center;
+}
+  
+.ion-item {
+    width: 90%;
+    max-width: 400px;
+    margin-top: 10px;
+}
+  
+.login-button {
+    width: 50%;
+    max-width: 400px;
+    margin-top: 20px;
+    --background: #333399;
+}
+  
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.7rem;
+}
+  
+.register-link {
+    color: #333399;
+    font-weight: bold;
+    font-size: 0.7rem;
+}
+
+a{
+    text-decoration: none;
+}
+
