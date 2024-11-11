@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router'; 
 
 
 @Component({
@@ -10,7 +11,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './p-main-conductor.page.html',
   styleUrls: ['./p-main-conductor.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, IonicModule]
+  imports: [CommonModule, FormsModule, RouterLink, IonicModule, RouterModule]
 })
 export class PMainConductorPage implements OnInit {
 

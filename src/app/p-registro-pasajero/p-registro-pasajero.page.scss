@@ -1,0 +1,79 @@
+.register-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    background-image: url('/assets/img/bg-estilo-tres.png'); // Cambia la ruta si es necesario
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 20px;
+    min-height: 100vh;
+    text-align: center;
+  
+    h1 {
+      font-size: 60px; // Tamaño del texto principal
+      font-weight: bold;
+      margin-top: 20px;
+      color: #fff;
+      text-align: center;
+    }
+  
+    p {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #a0a0a0;
+      a {
+        color: #6b46c1;
+        text-decoration: none;
+      }
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .form-group label {
+      font-size: 16px;
+      color: #fff;
+      align-self: flex-start; // Alinea las etiquetas a la izquierda
+    }
+  
+    .form-input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid white; // Línea inferior como en la imagen de referencia
+      color: #fff;
+      padding: 8px 0;
+      width: 100%;
+      text-align: center; // Centra el texto dentro del input
+      outline: none;
+    }
+  
+    .custom-button {
+      margin-top: 20px;
+      background-color: #6b46c1;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 15px 50px; // Aumenta el relleno para hacer el botón más grande
+      font-weight: bold;
+      width: auto;
+      max-width: 250px; // Aumenta el ancho máximo del botón
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .custom-button:hover {
+      background-color: #5a38a1;
+    }
+  }
