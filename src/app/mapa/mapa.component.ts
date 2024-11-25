@@ -23,8 +23,6 @@ export class MapComponent implements OnInit, AfterViewInit {
   ubicacionActual: L.LatLng | null = null;
   marcadorDestino: L.Marker | null = null;
   rutaActual: any = null;
-  mensajeGuardado: string = '';
-  mostrarMensaje: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {
     this.searchSubject.pipe(
@@ -50,6 +48,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.mapa);
 
+    // Agregar evento de clic en el mapa
     this.mapa.on('click', (e: L.LeafletMouseEvent) => {
       this.establecerDestino(e.latlng);
     });
@@ -112,7 +111,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   guardarRuta() {
     if (this.ubicacionActual && this.marcadorDestino) {
-      const rutaGuardada = {
+      const ruta = {
         inicio: {
           lat: this.ubicacionActual.lat,
           lng: this.ubicacionActual.lng
@@ -123,23 +122,12 @@ export class MapComponent implements OnInit, AfterViewInit {
         },
         fecha: new Date().toISOString()
       };
-      
-      // Guardar en localStorage
+
       const rutas = JSON.parse(localStorage.getItem('rutas') || '[]');
-      rutas.push(rutaGuardada);
+      rutas.push(ruta);
       localStorage.setItem('rutas', JSON.stringify(rutas));
       
-      this.mensajeGuardado = 'Ruta guardada exitosamente';
-      this.mostrarMensaje = true;
-      setTimeout(() => {
-        this.mostrarMensaje = false;
-      }, 3000); // El mensaje desaparecerá después de 3 segundos
-    } else {
-      this.mensajeGuardado = 'Por favor, selecciona un destino antes de guardar la ruta';
-      this.mostrarMensaje = true;
-      setTimeout(() => {
-        this.mostrarMensaje = false;
-      }, 3000);
+      alert('Ruta guardada exitosamente');
     }
   }
 }

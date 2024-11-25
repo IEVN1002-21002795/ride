@@ -1,17 +1,20 @@
 <div class="back-button" (click)="volverAPrincipal()">
-    &#8592;
-  </div>
-  
-  <div class="search-container">
-    <input type="text" [(ngModel)]="searchQuery" (input)="onSearchInput()" placeholder="Buscar destino">
-  </div>
-  
-  <div class="save-button" (click)="guardarRuta()">
-    Guardar Ruta
-  </div>
+  <ion-icon name="arrow-back-outline"></ion-icon>
+</div>
 
-  <div class="mensaje-guardado" *ngIf="mostrarMensaje">
-    {{ mensajeGuardado }}
-  </div>
-  
-  <div id="map"></div>
+<div class="search-container">
+  <input 
+    type="text" 
+    [(ngModel)]="searchQuery" 
+    (input)="onSearchInput()" 
+    placeholder="¿A dónde vas?"
+  >
+</div>
+
+<div class="save-route-button" *ngIf="marcadorDestino" (click)="guardarRuta()">
+  <ion-button expand="block" color="primary">
+    Guardar Ruta
+  </ion-button>
+</div>
+
+<div id="map"></div>

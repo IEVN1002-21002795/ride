@@ -1,0 +1,12 @@
+<div class="back-button" (click)="volverAPrincipal()">
+  &#8592;
+</div>
+
+<div class="rutas-container">
+  <h3>Rutas Guardadas</h3>
+  <div class="ruta-item" *ngFor="let ruta of rutasGuardadas" (click)="seleccionarRuta(ruta)">
+    <p>Fecha: {{ruta.fecha | date:'short'}}</p>
+  </div>
+</div>
+
+<div id="map"></div>
