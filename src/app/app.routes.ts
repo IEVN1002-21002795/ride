@@ -12,13 +12,18 @@ export const routes: Routes = [
   {
     path: 'p-rutas',
     loadComponent: () => import('./p-rutas/p-rutas.page').then( m => m.PRutasPage)
-  },  {
+  },
+  {
     path: 'p-registro-pasajero',
     loadComponent: () => import('./p-registro-pasajero/p-registro-pasajero.page').then( m => m.PRegistroPasajeroPage)
   },
   {
     path: 'p-registro-conductor',
     loadComponent: () => import('./p-registro-conductor/p-registro-conductor.page').then( m => m.PRegistroConductorPage)
+  },
+  {
+    path: 'mapa',
+    loadComponent: () => import('./mapa/mapa.component').then( m => m.MapComponent)
   }
 
 ];

@@ -7,11 +7,10 @@ import { RouterModule } from '@angular/router';
 
 
 @Component({
-  selector: 'app-p-registro-conductor',
-  templateUrl: './p-registro-conductor.page.html',
-  styleUrls: ['./p-registro-conductor.page.scss'],
-  standalone: true,
-  imports: [ CommonModule, FormsModule, IonicModule, RouterModule]
+    selector: 'app-p-registro-conductor',
+    templateUrl: './p-registro-conductor.page.html',
+    styleUrls: ['./p-registro-conductor.page.scss'],
+    imports: [CommonModule, FormsModule, IonicModule, RouterModule]
 })
 export class PRegistroConductorPage implements OnInit {
 

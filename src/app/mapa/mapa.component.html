@@ -1,1 +1,4 @@
-<div id="mapa"></div>
+<div class="search-container">
+    <input type="text" [(ngModel)]="searchQuery" (input)="onSearchInput()" placeholder="Buscar destino">
+  </div>
+  <div id="map"></div>

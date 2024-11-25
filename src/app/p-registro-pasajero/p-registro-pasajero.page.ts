@@ -6,11 +6,10 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-p-registro-pasajero',
-  templateUrl: './p-registro-pasajero.page.html',
-  styleUrls: ['./p-registro-pasajero.page.scss'],
-  standalone: true,
-  imports: [ CommonModule, FormsModule, RouterModule, IonicModule]
+    selector: 'app-p-registro-pasajero',
+    templateUrl: './p-registro-pasajero.page.html',
+    styleUrls: ['./p-registro-pasajero.page.scss'],
+    imports: [CommonModule, FormsModule, RouterModule, IonicModule]
 })
 export class PRegistroPasajeroPage implements OnInit {
 
