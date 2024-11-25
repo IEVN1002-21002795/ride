@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mapa',
@@ -24,7 +25,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   marcadorDestino: L.Marker | null = null;
   rutaActual: any = null;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private toastController: ToastController) {
     this.searchSubject.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -109,7 +110,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/p-main-conductor']);
   }
 
-  guardarRuta() {
+  async guardarRuta() {
     if (this.ubicacionActual && this.marcadorDestino) {
       const ruta = {
         inicio: {
@@ -122,12 +123,17 @@ export class MapComponent implements OnInit, AfterViewInit {
         },
         fecha: new Date().toISOString()
       };
-
+  
       const rutas = JSON.parse(localStorage.getItem('rutas') || '[]');
       rutas.push(ruta);
       localStorage.setItem('rutas', JSON.stringify(rutas));
       
-      alert('Ruta guardada exitosamente');
+      const toast = await this.toastController.create({
+        message: 'Ruta guardada exitosamente',
+        duration: 2000,
+        position: 'bottom'
+      });
+      toast.present();
     }
   }
 }
