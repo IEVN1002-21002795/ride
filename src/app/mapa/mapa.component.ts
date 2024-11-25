@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-mapa',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IonicModule],
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss']
 })
@@ -21,8 +23,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   ubicacionActual: L.LatLng | null = null;
   marcadorDestino: L.Marker | null = null;
   rutaActual: any = null;
+  mensajeGuardado: string = '';
+  mostrarMensaje: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.searchSubject.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -100,5 +104,42 @@ export class MapComponent implements OnInit, AfterViewInit {
       routeWhileDragging: true,
       addWaypoints: false
     }).addTo(this.mapa);
+  }
+
+  volverAPrincipal() {
+    this.router.navigate(['/p-main-conductor']);
+  }
+
+  guardarRuta() {
+    if (this.ubicacionActual && this.marcadorDestino) {
+      const rutaGuardada = {
+        inicio: {
+          lat: this.ubicacionActual.lat,
+          lng: this.ubicacionActual.lng
+        },
+        destino: {
+          lat: this.marcadorDestino.getLatLng().lat,
+          lng: this.marcadorDestino.getLatLng().lng
+        },
+        fecha: new Date().toISOString()
+      };
+      
+      // Guardar en localStorage
+      const rutas = JSON.parse(localStorage.getItem('rutas') || '[]');
+      rutas.push(rutaGuardada);
+      localStorage.setItem('rutas', JSON.stringify(rutas));
+      
+      this.mensajeGuardado = 'Ruta guardada exitosamente';
+      this.mostrarMensaje = true;
+      setTimeout(() => {
+        this.mostrarMensaje = false;
+      }, 3000); // El mensaje desaparecerá después de 3 segundos
+    } else {
+      this.mensajeGuardado = 'Por favor, selecciona un destino antes de guardar la ruta';
+      this.mostrarMensaje = true;
+      setTimeout(() => {
+        this.mostrarMensaje = false;
+      }, 3000);
+    }
   }
 }
