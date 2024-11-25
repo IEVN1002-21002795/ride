@@ -9,6 +9,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mapa',
@@ -25,7 +26,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   marcadorDestino: L.Marker | null = null;
   rutaActual: any = null;
 
-  constructor(private http: HttpClient, private router: Router, private toastController: ToastController) {
+  constructor(private http: HttpClient, private router: Router, private toastController: ToastController, private alertController: AlertController) {
     this.searchSubject.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -110,30 +111,63 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/p-main-conductor']);
   }
 
+  async solicitarNombreRuta(): Promise<string | null> {
+    const alert = await this.alertController.create({
+      header: 'Guardar Ruta',
+      inputs: [
+        {
+          name: 'nombreRuta',
+          type: 'text',
+          placeholder: 'Nombre de la ruta'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Guardar',
+          handler: (data) => {
+            return true; // Permitir que el alert se cierre
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+    const result = await alert.onDidDismiss();
+    return result.role === 'cancel' ? null : result.data.values.nombreRuta;
+  }
+
   async guardarRuta() {
     if (this.ubicacionActual && this.marcadorDestino) {
-      const ruta = {
-        inicio: {
-          lat: this.ubicacionActual.lat,
-          lng: this.ubicacionActual.lng
-        },
-        destino: {
-          lat: this.marcadorDestino.getLatLng().lat,
-          lng: this.marcadorDestino.getLatLng().lng
-        },
-        fecha: new Date().toISOString()
-      };
+      const nombreRuta = await this.solicitarNombreRuta();
+      if (nombreRuta) {
+        const ruta = {
+          nombre: nombreRuta,
+          inicio: {
+            lat: this.ubicacionActual.lat,
+            lng: this.ubicacionActual.lng
+          },
+          destino: {
+            lat: this.marcadorDestino.getLatLng().lat,
+            lng: this.marcadorDestino.getLatLng().lng
+          },
+          fecha: new Date().toISOString()
+        };
   
-      const rutas = JSON.parse(localStorage.getItem('rutas') || '[]');
-      rutas.push(ruta);
-      localStorage.setItem('rutas', JSON.stringify(rutas));
-      
-      const toast = await this.toastController.create({
-        message: 'Ruta guardada exitosamente',
-        duration: 2000,
-        position: 'bottom'
-      });
-      toast.present();
+        const rutas = JSON.parse(localStorage.getItem('rutas') || '[]');
+        rutas.push(ruta);
+        localStorage.setItem('rutas', JSON.stringify(rutas));
+        
+        const toast = await this.toastController.create({
+          message: `Ruta "${nombreRuta}" guardada exitosamente`,
+          duration: 2000,
+          position: 'bottom'
+        });
+        toast.present();
+      }
     }
   }
 }
