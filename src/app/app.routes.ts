@@ -28,7 +28,15 @@ export const routes: Routes = [
   {
     path: 'mapa-usuario',
     loadComponent: () => import('./mapa-usuario/mapa-usuario.component').then( m => m.MapaUsuarioComponent)
-  }
+  },
+  {
 
+    path: 'p-main-cuenta-a-crear',
+    loadComponent: () => import('./p-cuenta-crear/p-cuenta-crear.component').then( m => m.PCuentaCrearComponent)
+  },
+  {
+    path: 'p-main-conductor',
+    loadComponent: () => import('./p-main-conductor/p-main-conductor.page').then( m => m.PMainConductorPage)
+  },
 
 ];
