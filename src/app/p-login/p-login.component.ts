@@ -4,16 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-p-cuenta-crear',
-  templateUrl: './p-cuenta-crear.component.html',
-  styleUrls: ['./p-cuenta-crear.component.scss'],
+  selector: 'app-p-login',
+  templateUrl: './p-login.component.html',
+  styleUrls: ['./p-login.component.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
 })
-export class PCuentaCrearComponent  implements OnInit {
+export class PLoginComponent  implements OnInit {
 
   constructor() { }
 
   ngOnInit() {}
 
 }
+
