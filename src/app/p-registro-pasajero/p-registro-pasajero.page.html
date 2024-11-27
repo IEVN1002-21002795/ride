@@ -2,25 +2,93 @@
   <h1>¡El ride que no tarda en pasar!</h1>
   <p>¿Ya te has registrado? <a [routerLink]="['/p-main-carga']">Ingresar</a></p>
 
-  <div class="form-group">
-    <label for="matricula">Matrícula</label>
-    <input type="text" id="matricula" class="form-input" />
-  </div>
+  <form #registroForm="ngForm" (ngSubmit)="registrarPasajero()">
+    <div class="form-group">
+      <label for="id">Matrícula</label>
+      <input
+        type="text"
+        id="id"
+        class="form-input"
+        [(ngModel)]="id"
+        name="id"
+        required
+        #idField="ngModel"
+      />
+      <div *ngIf="idField.invalid && idField.touched" class="error">
+        La matrícula es obligatoria.
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="nombre">Nombre</label>
-    <input type="text" id="nombre" class="form-input" />
-  </div>
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        class="form-input"
+        [(ngModel)]="nombre"
+        name="nombre"
+        required
+        #nombreField="ngModel"
+      />
+      <div *ngIf="nombreField.invalid && nombreField.touched" class="error">
+        El nombre es obligatorio.
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="apellidos">Apellidos</label>
-    <input type="text" id="apellidos" class="form-input" />
-  </div>
+    <div class="form-group">
+      <label for="apellidos">Apellidos</label>
+      <input
+        type="text"
+        id="apellidos"
+        class="form-input"
+        [(ngModel)]="apellidos"
+        name="apellidos"
+        required
+        #apellidosField="ngModel"
+      />
+      <div *ngIf="apellidosField.invalid && apellidosField.touched" class="error">
+        Los apellidos son obligatorios.
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="contrasena">Contraseña</label>
-    <input type="password" id="contrasena" class="form-input" />
-  </div>
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input
+        type="email"
+        id="correo"
+        class="form-input"
+        [(ngModel)]="correo"
+        name="correo"
+        required
+        #correoField="ngModel"
+      />
+      <div *ngIf="correoField.invalid && correoField.touched" class="error">
+        El correo es obligatorio.
+      </div>
+    </div>
 
-  <button class="custom-button">Continuar</button>
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input
+        type="password"
+        id="password"
+        class="form-input"
+        [(ngModel)]="password"
+        name="password"
+        required
+        #passwordField="ngModel"
+      />
+      <div *ngIf="passwordField.invalid && passwordField.touched" class="error">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="custom-button"
+      [disabled]="registroForm.invalid"
+    >
+      Continuar
+    </button>
+  </form>
 </div>
