@@ -22,7 +22,6 @@ export const routes: Routes = [
     loadComponent: () => import('./p-registro-conductor/p-registro-conductor.page').then( m => m.PRegistroConductorPage)
   },
   {
-
     path: 'p-main-login',
     loadComponent: () => import('./p-login/p-login.component').then( m => m.PLoginComponent)
   },
@@ -37,6 +36,13 @@ export const routes: Routes = [
   {
     path: 'p-rutas',
     loadComponent: () => import('./p-rutas/p-rutas.page').then( m => m.PRutasPage)
+  },
+  {
+    path: 'mapa',
+    loadComponent: () => import('./mapa/mapa.component').then( m => m.MapComponent)
+  },
+  {
+    path: 'mapa-usuario',
+    loadComponent: () => import('./mapa-usuario/mapa-usuario.component').then( m => m.MapaUsuarioComponent)
   }
-
 ];

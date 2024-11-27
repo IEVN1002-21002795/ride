@@ -3,14 +3,15 @@ import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { logoIonic } from 'ionicons/icons';
 import { RouterLink } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  standalone: true,
-  imports: [ IonicModule, RouterLink],
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    imports: [IonicModule, RouterLink, HttpClientModule]
 })
 export class AppComponent {
   constructor() {

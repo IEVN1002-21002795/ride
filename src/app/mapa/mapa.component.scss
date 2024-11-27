@@ -1,0 +1,47 @@
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+
+  ion-icon {
+    font-size: 24px;
+    color: #000000;
+  }
+}
+
+.search-container {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  right: 10px;
+  z-index: 1000;
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+}
+
+.save-route-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 90%;
+  max-width: 300px;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}

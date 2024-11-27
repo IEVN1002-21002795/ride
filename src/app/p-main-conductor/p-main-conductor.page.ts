@@ -7,11 +7,10 @@ import { RouterModule } from '@angular/router';
 
 
 @Component({
-  selector: 'app-p-main-conductor',
-  templateUrl: './p-main-conductor.page.html',
-  styleUrls: ['./p-main-conductor.page.scss'],
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, IonicModule, RouterModule]
+    selector: 'app-p-main-conductor',
+    templateUrl: './p-main-conductor.page.html',
+    styleUrls: ['./p-main-conductor.page.scss'],
+    imports: [CommonModule, FormsModule, RouterLink, IonicModule, RouterModule]
 })
 export class PMainConductorPage implements OnInit {
 

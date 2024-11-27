@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
-  selector: 'app-p-carga',
-  templateUrl: './p-carga.page.html',
-  styleUrls: ['./p-carga.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+    selector: 'app-p-carga',
+    templateUrl: './p-carga.page.html',
+    styleUrls: ['./p-carga.page.scss'],
+    imports: [IonicModule, CommonModule, FormsModule]
 })
 export class PCargaPage implements OnInit {
 

@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./p-cuenta-crear.component.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule]
+
 })
 export class PCuentaCrearComponent  implements OnInit {
 

@@ -1,0 +1,20 @@
+<div class="back-button" (click)="volverAPrincipal()">
+  <ion-icon name="arrow-back-outline"></ion-icon>
+</div>
+
+<div class="search-container">
+  <input 
+    type="text" 
+    [(ngModel)]="searchQuery" 
+    (input)="onSearchInput()" 
+    placeholder="¿A dónde vas?"
+  >
+</div>
+
+<div class="save-route-button" *ngIf="marcadorDestino" (click)="guardarRuta()">
+  <ion-button expand="block" color="primary">
+    Guardar Ruta
+  </ion-button>
+</div>
+
+<div id="map"></div>
