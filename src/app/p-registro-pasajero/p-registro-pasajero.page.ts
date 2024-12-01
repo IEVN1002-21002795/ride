@@ -41,7 +41,7 @@ export class PRegistroPasajeroPage implements OnInit {
             (response) => {
                 console.log('Pasajero registrado:', response);
                 alert('Registro exitoso');
-                this.router.navigate(['/p-main-login']);
+                this.router.navigate(['/mapa-usuario']);
             },
             (error) => {
                 console.error('Error al registrar pasajero:', error);

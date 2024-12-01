@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'p-main-carga', 
+    path: 'p-main-conductor', 
     loadComponent: ()=> import('./p-carga/p-carga.page').then(m => m.PCargaPage)
   },
   {
@@ -44,5 +44,9 @@ export const routes: Routes = [
   {
     path: 'mapa-usuario',
     loadComponent: () => import('./mapa-usuario/mapa-usuario.component').then( m => m.MapaUsuarioComponent)
-  }
+  },
+  {
+    path: '',
+    loadComponent: () => import('./p-login/p-login.component').then( m => m.PLoginComponent)
+  },
 ];

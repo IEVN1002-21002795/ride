@@ -1,82 +1,35 @@
-.login-background {
-    --background: url('../../assets/img/bg-estilo-dos.png') no-repeat center center / cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-}
-  
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-top: 20px;
-}
-  
-.logo {
-    width: 200px;
-    height: 150px;
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background: url('../../assets/img/bg-estilo-cuatro.png') no-repeat bottom center;
 }
 
-.titulo-login-ride-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+.splash-logo img {
+  width: 120px;
+  animation: fadeIn 1.5s ease-in-out infinite;
 }
 
-.app-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffffff;
+
+@keyframes fadeIn {
+  0%, 100% {
+    opacity: 0.6;
   }
-
-.cont-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 0px;
-}
-  
-.welcome-text {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    text-align: center;
-}
-  
-.ion-item {
-    width: 90%;
-    max-width: 400px;
-    margin-top: 10px;
-}
-  
-.login-button {
-    width: 50%;
-    max-width: 400px;
-    margin-top: 20px;
-    --background: #333399;
-}
-  
-.links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-    text-align: center;
-    font-size: 0.7rem;
-}
-  
-.register-link {
-    color: #333399;
-    font-weight: bold;
-    font-size: 0.7rem;
+  50% {
+    opacity: 1;
+  }
 }
 
-a{
-    text-decoration: none;
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
 }
-

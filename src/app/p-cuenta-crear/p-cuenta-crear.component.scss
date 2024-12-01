@@ -105,7 +105,9 @@ body, html {
 .login-link:hover span {
   color: #333399;
 }
-
+.a{
+  text-decoration: none;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-text {
