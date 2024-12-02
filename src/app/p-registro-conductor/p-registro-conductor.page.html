@@ -1,0 +1,86 @@
+<div class="register-content">
+  <h1>¡Estás muy cerca de formar parte de Ride!</h1>
+  <p>¿Ya tienes cuenta? <a routerLink="/p-main-login">Ingresar</a></p>
+
+  <form (ngSubmit)="registrarConductor()" #registroForm="ngForm">
+    <div class="form-group">
+      <label for="id">Matrícula</label>
+      <input
+        type="text"
+        id="id"
+        class="form-input"
+        [(ngModel)]="id"
+        name="matricula"
+        required
+      />
+      <div *ngIf="registroForm.submitted && !id" class="error">
+        La matrícula es obligatoria.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        class="form-input"
+        [(ngModel)]="nombre"
+        name="nombre"
+        required
+      />
+      <div *ngIf="registroForm.submitted && !nombre" class="error">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="apellidos">Apellidos</label>
+      <input
+        type="text"
+        id="apellidos"
+        class="form-input"
+        [(ngModel)]="apellidos"
+        name="apellidos"
+        required
+      />
+      <div *ngIf="registroForm.submitted && !apellidos" class="error">
+        Los apellidos son obligatorios.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="correo">Correo</label>
+      <input
+        type="email"
+        id="correo"
+        class="form-input"
+        [(ngModel)]="correo"
+        name="correo"
+        required
+        #correoField="ngModel"
+      />
+      <div *ngIf="correoField.invalid && correoField.touched" class="error">
+        El correo es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input
+        type="password"
+        id="contrasena"
+        class="form-input"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+      <div *ngIf="registroForm.submitted && !password" class="error">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <button type="submit" class="custom-button" [disabled]="registroForm.invalid">
+      Continuar
+    </button>
+  </form>
+</div>
