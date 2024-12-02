@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router'; 
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Component({
@@ -12,11 +14,34 @@ import { RouterModule } from '@angular/router';
     styleUrls: ['./p-registro-conductor.page.scss'],
     imports: [CommonModule, FormsModule, IonicModule, RouterModule]
 })
-export class PRegistroConductorPage implements OnInit {
 
-  constructor() { }
+export class PRegistroConductorPage {
+  id: string = '';
+  nombre: string = '';
+  apellidos: string = '';
+  correo: string = '';
+  password: string = '';
 
-  ngOnInit() {
+  constructor(private http: HttpClient) {}
+
+  registrarConductor() {
+    const datos = {
+      id: this.id,
+      nombre: this.nombre,
+      apellidos: this.apellidos,
+      correo: this.correo,
+      password: this.password,
+    };
+
+    this.http.post('http://127.0.0.1:5000/registro_conductor', datos).subscribe(
+      (response: any) => {
+        console.log('Respuesta del servidor:', response);
+        alert('¡Conductor registrado exitosamente!');
+      },
+      (error) => {
+        console.error('Error al registrar conductor:', error);
+        alert('Ocurrió un error al registrar el conductor.');
+      }
+    );
   }
-
 }

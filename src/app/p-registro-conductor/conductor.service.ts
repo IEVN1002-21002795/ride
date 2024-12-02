@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class PasajeroService {
+export class ConductorService {
   constructor(private api: ApiService) {}
 
-  registrarPasajero(datos: any): Observable<any> {
-    return this.api.post('registro_pasajero', datos); // Usa ApiService para realizar la solicitud
+  registrarConductor(datos: any): Observable<any> {
+    return this.api.post('registro_conductor', datos); // Usa ApiService para realizar la solicitud
   }
 }
