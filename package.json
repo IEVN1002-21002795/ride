@@ -28,6 +28,7 @@
     "@capacitor/status-bar": "6.0.1",
     "@ionic/angular": "^8.0.0",
     "@types/leaflet-routing-machine": "^3.2.8",
+    "ionic": "^5.4.16",
     "ionicons": "^7.2.1",
     "leaflet": "^1.9.4",
     "leaflet-routing-machine": "^3.2.12",

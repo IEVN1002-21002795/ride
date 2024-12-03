@@ -1,12 +1,16 @@
 <div class="back-button" (click)="volverAPrincipal()">
-  &#8592;
+  <ion-icon name="arrow-back-outline"></ion-icon>
 </div>
-
 <div class="rutas-container">
-  <h3>Rutas Guardadas</h3>
-  <div class="ruta-item" *ngFor="let ruta of rutasGuardadas" (click)="seleccionarRuta(ruta)">
-    <p>Fecha: {{ruta.fecha | date:'short'}}</p>
+  <h3>Rutas Disponibles</h3>
+  <div class="ruta-item" *ngFor="let ruta of rutasDisponibles" (click)="seleccionarRuta(ruta)">
+    <p>Ruta: {{ruta.fecha | date:'short'}}</p>
   </div>
 </div>
-
+<div *ngIf="rutaSeleccionada" class="ruta-seleccionada">
+  <p>Ruta seleccionada: desde {{rutaSeleccionada.inicio.lat}} hasta {{rutaSeleccionada.destino.lat}}</p>
+  <ion-button expand="block" (click)="asignarRuta()">
+    Seleccionar esta ruta
+  </ion-button>
+</div>
 <div id="map"></div>

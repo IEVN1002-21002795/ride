@@ -11,24 +11,14 @@ import { IonicModule } from '@ionic/angular';
   selector: 'app-mapa-usuario',
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule],
-  template: `
-    <div class="back-button" (click)="volverAPrincipal()">
-      <ion-icon name="arrow-back-outline"></ion-icon>
-    </div>
-    <div class="rutas-container">
-      <h3>Rutas Disponibles</h3>
-      <div class="ruta-item" *ngFor="let ruta of rutasDisponibles" (click)="seleccionarRuta(ruta)">
-        <p>Ruta: {{ruta.fecha | date:'short'}}</p>
-      </div>
-    </div>
-    <div id="map"></div>
-  `,
+  templateUrl: './mapa-usuario.component.html',
   styleUrls: ['./mapa-usuario.component.scss']
 })
 export class MapaUsuarioComponent implements OnInit, AfterViewInit {
   private mapa!: L.Map;
   rutasDisponibles: any[] = [];
   rutaActual: any = null;
+  rutaSeleccionada: any = null; // Asegúrate de tener esta propiedad
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -46,12 +36,9 @@ export class MapaUsuarioComponent implements OnInit, AfterViewInit {
         center: [19.4326, -99.1332],
         zoom: 13
       });
-  
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(this.mapa);
-  
-      // Forzar un reajuste del mapa
       this.mapa.invalidateSize();
     }, 100);
   }
@@ -61,14 +48,30 @@ export class MapaUsuarioComponent implements OnInit, AfterViewInit {
   }
 
   seleccionarRuta(ruta: any) {
+    this.rutaSeleccionada = ruta; // Actualiza la ruta seleccionada
+  }
+
+  asignarRuta() {
+    if (!this.rutaSeleccionada) return;
+
     if (this.rutaActual) {
       this.mapa.removeControl(this.rutaActual);
     }
-    
-    const inicio = L.latLng(ruta.inicio.lat, ruta.inicio.lng);
-    const fin = L.latLng(ruta.destino.lat, ruta.destino.lng);
-    
+    const inicio = L.latLng(this.rutaSeleccionada.inicio.lat, this.rutaSeleccionada.inicio.lng);
+    const fin = L.latLng(this.rutaSeleccionada.destino.lat, this.rutaSeleccionada.destino.lng);
+
+    const usuarioId = localStorage.getItem('usuarioId');
+    const rutaAsignada = {
+      ...this.rutaSeleccionada,
+      usuarioId: usuarioId,
+      fechaAsignacion: new Date().toISOString()
+    };
+    const rutasAsignadas = JSON.parse(localStorage.getItem('rutasAsignadas') || '[]');
+    rutasAsignadas.push(rutaAsignada);
+    localStorage.setItem('rutasAsignadas', JSON.stringify(rutasAsignadas));
+
     this.mostrarRuta(inicio, fin);
+    this.rutaSeleccionada = null; // Limpiar la selección después de asignar
   }
 
   private mostrarRuta(inicio: L.LatLng, fin: L.LatLng) {
